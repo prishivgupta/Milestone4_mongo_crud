@@ -1,0 +1,50 @@
+<div class="container">
+
+    <br/>
+    <br/>
+
+    <div class="row">
+        <div class="col-9">
+            <h2>Products Table</h2>
+        </div>
+
+        <!-- button to go to Add product page using router link -->
+        <div class="col">
+            <button type="button" class="btn btn-success" routerLink="addProduct" style="background-color: #609966;"><i class="bi bi-plus-circle"></i> &nbsp; Add Products</button>
+        </div>
+    </div>
+    <br/>
+
+    <!-- creating a table and checking if products exist -->
+    <table *ngIf="products.length > 0" class="table table-striped" style="background-color: #EDF1D6;">
+        <thead>
+            <tr>
+            <th scope="col">Product Id</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Product Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Category</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <!-- using ng for to display all the products data inside the table -->
+            <tr *ngFor="let product of products">
+                <td>{{product.id}}</td>
+                <td>{{product.productName}}</td>
+                <td>{{product.productDescription}}</td>
+                <td>{{product.productPrice}}</td>
+                <td>{{product.category}}</td>
+                
+                <td>
+                    <!-- button to go to edit product page using routerLink -->
+                    <button type="button" class="btn btn-dark" routerLink="editProduct/{{product.id}}"><i class="bi bi-pencil"></i> &nbsp; Edit</button>
+                    &nbsp; &nbsp;
+                    <!-- button to delete the product from the table -->
+                    <button type="button" class="btn btn-danger" (click)="deleteProduct(product.id)"><i class="bi bi-trash"></i> &nbsp; Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
